@@ -12,6 +12,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../api";
 import { toaster } from "@/components/ui/toaster";
+import GoogleAuth from "@/components/GoogleAuth/GoogleAuth";
 
 export default function Signup() {
   const [loading, setLoading] = useState(false);
@@ -42,6 +43,7 @@ export default function Signup() {
         description: "Please check your email and verify your account to log in.",
         type: "success",
         closable: true,
+        duration: null,
       })
     } catch (error) {
       console.error("Signup error:", error); 
@@ -54,8 +56,8 @@ export default function Signup() {
 
   return (
     <>
-      <Container maxW="xl" centerContent>
-        <Stack textAlign="center" mb={10} mt={12} gap={6}>
+      <Container maxW="sm" centerContent>
+        <Stack textAlign="center" mb={10} mt={12} gap={2}>
           <Heading size="3xl" fontWeight="bold" color="blue.600">
             Sign Up
           </Heading>
@@ -68,6 +70,7 @@ export default function Signup() {
             borderRadius="2xl"
             boxShadow="lg"
             minW="sm"
+            maxW="sm"
             border="1px solid"
             borderColor="gray.200"
           >
@@ -115,8 +118,8 @@ export default function Signup() {
               <Button
                 type="submit"
                 colorPalette={"blue"}
-                size="lg"
-                mt={4}
+                size="md"
+                mt={2}
                 w="full"
                 borderRadius="xl"
                 boxShadow="md"
@@ -127,6 +130,8 @@ export default function Signup() {
               >
                 Sign Up
               </Button>
+            
+              <GoogleAuth />
             </Stack>
           </Box>
         </Stack>
