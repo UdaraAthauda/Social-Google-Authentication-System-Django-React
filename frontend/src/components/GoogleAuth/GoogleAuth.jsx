@@ -34,7 +34,7 @@ export default function GoogleAuth() {
         description: "Google login was unsuccessful. Please try again.",
         type: "error",
         closable: true,
-        duration: null,
+        duration: Infinity,
       });
     }
   };
@@ -49,7 +49,7 @@ export default function GoogleAuth() {
             description: "Google login was unsuccessful. Please try again.",
             type: "error",
             closable: true,
-            duration: null,
+            duration: Infinity,
           });
         }}
       />

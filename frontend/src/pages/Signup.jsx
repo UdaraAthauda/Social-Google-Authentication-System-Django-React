@@ -7,9 +7,10 @@ import {
   Field,
   Input,
   Button,
+  Text
 } from "@chakra-ui/react";
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import api from "../api";
 import { toaster } from "@/components/ui/toaster";
 import GoogleAuth from "@/components/GoogleAuth/GoogleAuth";
@@ -43,7 +44,7 @@ export default function Signup() {
         description: "Please check your email and verify your account to log in.",
         type: "success",
         closable: true,
-        duration: null,
+        duration: Infinity,
       })
     } catch (error) {
       console.error("Signup error:", error); 
@@ -114,12 +115,11 @@ export default function Signup() {
                 />
                 <Field.ErrorText>{errors.non_field_errors}</Field.ErrorText>
               </Field.Root>
-
+              
               <Button
                 type="submit"
                 colorPalette={"blue"}
                 size="md"
-                mt={2}
                 w="full"
                 borderRadius="xl"
                 boxShadow="md"
@@ -130,9 +130,11 @@ export default function Signup() {
               >
                 Sign Up
               </Button>
-            
+              <Text textAlign="center" color="gray.500">or continue with</Text>
               <GoogleAuth />
             </Stack>
+
+            <Link to='/login'><Text mt={3} fontSize="sm" color="blue.500">Already a user? Login</Text></Link>
           </Box>
         </Stack>
       </Container>
