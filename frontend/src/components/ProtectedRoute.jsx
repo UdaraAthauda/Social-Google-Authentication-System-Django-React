@@ -1,7 +1,6 @@
 import { useEffect, useContext } from "react";
 import { Navigate } from "react-router-dom";
 import { AuthContext } from "./AuthContext";
-import { toaster } from "./ui/toaster";
 import { Spinner, Flex } from "@chakra-ui/react";
 
 export default function ProtectedRoute({ children }) {

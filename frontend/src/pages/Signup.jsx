@@ -121,7 +121,6 @@ export default function Signup() {
                 colorPalette={"blue"}
                 size="md"
                 w="full"
-                borderRadius="xl"
                 boxShadow="md"
                 _hover={{ boxShadow: "xl", transform: "translateY(-2px)" }}
                 transition="all 0.2s ease"

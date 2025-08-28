@@ -8,11 +8,10 @@ import { toaster } from './components/ui/toaster'
 import ProtectedRoute from './components/ProtectedRoute'
 
 function Logout() {
-  const { setIsAuthenticated, setUser } = useContext(AuthContext);
+  const { setIsAuthenticated } = useContext(AuthContext);
   localStorage.clear();
 
   setIsAuthenticated(false);
-  setUser(null);
 
   toaster.create({
     title: "Logged Out",

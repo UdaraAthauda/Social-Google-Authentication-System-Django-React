@@ -9,22 +9,28 @@ import {
   Button,
   Text,
 } from "@chakra-ui/react";
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import api from "../api";
 import { toaster } from "@/components/ui/toaster";
 import GoogleAuth from "@/components/GoogleAuth/GoogleAuth";
-import { ACCESS_TOKEN, REFRESH_TOKEN } from "@/constants";
-
+import { ACCESS_TOKEN, REFRESH_TOKEN, USER } from "@/constants";
+import { AuthContext } from "@/components/AuthContext";
 
 export default function Login() {
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState([]);
   const navigate = useNavigate();
+  const { isAuthenticated, setIsAuthenticated} = useContext(AuthContext)
+
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
+
+  useEffect(() => {
+    if (isAuthenticated) navigate('/')
+  }, [isAuthenticated])
 
 
   const handleFormChange = (e) => {
@@ -40,8 +46,8 @@ export default function Login() {
 
       localStorage.setItem(ACCESS_TOKEN, res.data.access);
       localStorage.setItem(REFRESH_TOKEN, res.data.refresh);
-
-      navigate('/');
+      localStorage.setItem(USER, res.data.user?.email)
+      setIsAuthenticated(true)
 
       toaster.create({
         title: "Login Successful",
@@ -50,6 +56,9 @@ export default function Login() {
         closable: true,
         duration: 5000,
       })
+
+      navigate('/');
+
     } catch (error) {
       console.error("Login error:", error); 
       setErrors(error.response?.data || "An error occurred. Please try again.");
@@ -112,7 +121,6 @@ export default function Login() {
                 colorPalette={"blue"}
                 size="md"
                 w="full"
-                borderRadius="xl"
                 boxShadow="md"
                 _hover={{ boxShadow: "xl", transform: "translateY(-2px)" }}
                 transition="all 0.2s ease"

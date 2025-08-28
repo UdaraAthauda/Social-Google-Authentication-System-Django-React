@@ -1,12 +1,14 @@
-import React from "react";
+import {useContext} from "react";
 import { GoogleLogin } from "@react-oauth/google";
 import api from "@/api";
-import { ACCESS_TOKEN, REFRESH_TOKEN } from "@/constants";
+import { ACCESS_TOKEN, REFRESH_TOKEN, USER } from "@/constants";
 import { toaster } from "../ui/toaster";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../AuthContext";
 
 export default function GoogleAuth() {
   const navigate = useNavigate();
+  const {setIsAuthenticated} = useContext(AuthContext)
 
   const handleLoginSuccess = async (credentialResponse) => {
     try {
@@ -16,6 +18,8 @@ export default function GoogleAuth() {
 
       localStorage.setItem(ACCESS_TOKEN, res.data.access);
       localStorage.setItem(REFRESH_TOKEN, res.data.refresh);
+      localStorage.setItem(USER, res.data.user?.email)
+      setIsAuthenticated(true)
 
       toaster.create({
         title: "Login Successful",
@@ -26,6 +30,7 @@ export default function GoogleAuth() {
       });
 
       navigate("/");
+
     } catch (error) {
       console.error("Google login error:", error);
 
