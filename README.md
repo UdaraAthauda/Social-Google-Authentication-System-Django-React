@@ -26,7 +26,7 @@ Swagger Documentation → API endpoints documented using drf-yasg.
 
 CORS Support → Configured with django-cors-headers for frontend integration.
 
-Google OAuth Ready → Social login integration via django-allauth (optional).
+Google OAuth Ready → Social login integration via django-allauth.
 
 
 
@@ -42,4 +42,4 @@ Database: Default SQLite (can be replaced with PostgreSQL or MySQL)
 
 Environment Management: python-dotenv / environs
 
-Email: Console backend for testing (can be replaced with SMTP)
+Email: SMTP
