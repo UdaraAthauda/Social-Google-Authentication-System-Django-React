@@ -1,10 +1,11 @@
-Social(Google) Authentication System
+📌Social(Google) Authentication System
 
 
 A Full-Stack Authentication System built with Django REST Framework and React, featuring email-based registration and login with JWT authentication.
 
 
 The backend leverages django-allauth and dj-rest-auth for user registration, login, and email verification, while the frontend uses Axios interceptors for automatic token handling. The UI is built with Chakra UI and shadcn components, providing a clean, responsive design for modern web apps.
+
 
 
 🔑 Features
@@ -26,6 +27,7 @@ Swagger Documentation → API endpoints documented using drf-yasg.
 CORS Support → Configured with django-cors-headers for frontend integration.
 
 Google OAuth Ready → Social login integration via django-allauth (optional).
+
 
 
 🛠 Tech Stack
